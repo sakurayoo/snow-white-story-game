@@ -6,6 +6,8 @@
 # Backend secrets
 AiChatApp.API/AiChatApp.API/appsettings.json
 AiChatApp.API/AiChatApp.API/appsettings.*.json
+# But allow the example template
+!AiChatApp.API/AiChatApp.API/appsettings.example.json
 
 # Frontend secrets
 ai-chat-frontend/.env
