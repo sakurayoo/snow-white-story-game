@@ -60,7 +60,7 @@ dotnet ef database update
 dotnet run
 ```
 
-API 執行於 `http://localhost:5000`
+API 執行於 `http://localhost:5114`
 
 ### 2. 前端設定
 
