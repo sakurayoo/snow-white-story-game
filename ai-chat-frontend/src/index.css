@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Cherry blossom background ── */
+.sakura-bg {
+  background:
+    radial-gradient(ellipse at 10% 15%, rgba(255,192,203,0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 85%, rgba(255,182,193,0.35) 0%, transparent 45%),
+    radial-gradient(ellipse at 55%  5%, rgba(255,210,220,0.25) 0%, transparent 35%),
+    #FFF5F8;
+}
+.dark .sakura-bg {
+  background:
+    radial-gradient(ellipse at 10% 15%, rgba(80,20,40,0.55) 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 85%, rgba(80,20,40,0.55) 0%, transparent 45%),
+    #130912;
+}
+
+/* ── Book page inner shadows (spine edges) ── */
+.book-page-left  { box-shadow: inset -10px 0 20px rgba(0,0,0,0.07); }
+.book-page-right { box-shadow: inset  10px 0 20px rgba(0,0,0,0.05); }
+
+/* ── Book cover opening (spine fixed, cover swings open) ── */
+.book-cover {
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 1.3s cubic-bezier(0.3, 0, 0.15, 1);
+}
+.book-cover-open { transform: rotateY(175deg); }
+
+.book-face-front {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.book-face-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+
+/* ── Screen fade in ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.fade-in-up { animation: fadeInUp 0.4s ease-out both; }
+
+/* ── Story font ── */
+.story-text {
+  font-family: 'Noto Serif TC', 'Playfair Display', Georgia, serif;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+/* ── Choice buttons ── */
+.choice-btn { transition: transform 0.13s ease, box-shadow 0.13s ease, border-color 0.13s ease, background-color 0.13s ease; }
+.choice-btn:not(:disabled):hover  { transform: translateX(4px); box-shadow: 0 2px 8px rgba(180,80,80,0.1); }
+.choice-btn:not(:disabled):active { transform: translateX(2px) scale(0.99); }
+
+/* ── Loading dots ── */
+@keyframes blink { 0%,80%,100%{transform:scale(.65);opacity:.35} 40%{transform:scale(1);opacity:1} }
+.dot-1 { animation: blink 1.1s ease-in-out 0s   infinite; }
+.dot-2 { animation: blink 1.1s ease-in-out .18s infinite; }
+.dot-3 { animation: blink 1.1s ease-in-out .36s infinite; }
+
+/* ── Input focus ── */
+.chat-input:focus { outline: none; border-color: #C9A880; box-shadow: 0 0 0 3px rgba(201,168,128,.15); }
+.dark .chat-input:focus { border-color: #9B6040; box-shadow: 0 0 0 3px rgba(155,96,64,.2); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: #E8C9B5; border-radius: 99px; }
+.dark ::-webkit-scrollbar-thumb { background: #6B3030; }

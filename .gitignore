@@ -1,0 +1,23 @@
+# SQLite database
+*.db
+*.db-shm
+*.db-wal
+
+# Backend secrets
+AiChatApp.API/AiChatApp.API/appsettings.json
+AiChatApp.API/AiChatApp.API/appsettings.*.json
+
+# Frontend secrets
+ai-chat-frontend/.env
+ai-chat-frontend/.env.local
+
+# Build outputs
+ai-chat-frontend/node_modules/
+ai-chat-frontend/build/
+AiChatApp.API/AiChatApp.API/bin/
+AiChatApp.API/AiChatApp.API/obj/
+
+# IDE
+.vs/
+.vscode/
+*.user
