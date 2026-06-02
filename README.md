@@ -1,83 +1,75 @@
-# AI 問答助手
+# 🌸 白雪公主的故事
 
-類似 ChatGPT 介面的 AI 問答應用，使用 Claude AI。
+互動式童話故事遊戲 — 扮演誤入魔法森林的旅人，與白雪公主一同冒險、打破邪惡皇后的詛咒。
 
 ## 技術棧
 
-| 層  | 技術 |
-|-----|------|
-| 前端 | React 18 + Bootstrap 5 + React-Bootstrap |
-| 後端 | ASP.NET Core Web API (.NET 8) |
-| 資料庫 | MSSQL + Entity Framework Core 8 |
-| AI | Anthropic Claude (claude-sonnet-4-20250514) |
+| 層 | 技術 |
+|----|------|
+| 前端 | React 18 + Tailwind CSS + DaisyUI |
+| 後端 | ASP.NET Core Web API (.NET 10) |
+| 資料庫 | SQLite + Entity Framework Core 9 |
+| AI | Groq API (`llama-3.3-70b-versatile`) |
+
+## 功能
+
+- 📖 書本翻開動畫（3D CSS），進入童話世界
+- ✍️ 打字機效果逐字顯示故事文字
+- 🌸 A / B / C 選項按鈕 + D 自由輸入
+- 😊 自動偵測公主心情並顯示情緒標籤
+- 🌙 Groq 429 rate limit 自動倒數計時提示
+- 🌗 深色 / 淺色模式切換
 
 ## 啟動步驟
 
-### 1. 前置需求
+### 前置需求
 
 - Node.js 18+
-- .NET 8 SDK
-- SQL Server（本機或 Express）
+- .NET 10 SDK
+- [Groq API Key](https://console.groq.com)（免費）
 
-### 2. 後端設定
+### 1. 後端設定
 
 ```bash
 cd AiChatApp.API/AiChatApp.API
 ```
 
-編輯 `appsettings.json`，填入連線字串與 Claude API Key：
+複製設定範本並填入 Groq API Key：
+
+```bash
+cp appsettings.example.json appsettings.json
+```
+
+編輯 `appsettings.json`：
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=.;Database=AiChatDb;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Data Source=aichat.db"
   },
-  "Claude": {
-    "ApiKey": "sk-ant-xxxx"
+  "Groq": {
+    "ApiKey": "gsk_你的金鑰"
   }
 }
 ```
 
-建立資料庫：
+建立資料庫並啟動：
 
 ```bash
 dotnet ef database update
-```
-
-啟動 API：
-
-```bash
 dotnet run
 ```
 
-API 預設執行於 `http://localhost:5000`
+API 執行於 `http://localhost:5000`
 
-### 3. 前端設定
+### 2. 前端設定
 
 ```bash
 cd ai-chat-frontend
-```
-
-編輯 `.env`（預設已正確）：
-
-```
-REACT_APP_API_URL=http://localhost:5000/api
-```
-
-安裝套件並啟動：
-
-```bash
 npm install
 npm start
 ```
 
-前端預設執行於 `http://localhost:3000`
+前端執行於 `http://localhost:3000`
 
-## 功能
-
-- 建立多個對話，標題自動用第一則訊息前 20 字
-- 與 Claude AI 即時對話（完整歷史上下文）
-- 對話記錄儲存於 MSSQL 資料庫
-- 可刪除對話
-- Enter 送出、Shift+Enter 換行
-- 深色主題 UI
+> 無需額外設定，預設已連接 `http://localhost:5000/api`
