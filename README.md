@@ -73,3 +73,9 @@ npm start
 前端執行於 `http://localhost:3000`
 
 > 無需額外設定，預設已連接 `http://localhost:5000/api`
+
+### 3. DB設定
+
+```bash
+dotnet ef database update
+```
